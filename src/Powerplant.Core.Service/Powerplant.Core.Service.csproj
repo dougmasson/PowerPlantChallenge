@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Powerplant.Core.Domain\Powerplant.Core.Domain.csproj" />
+    <ProjectReference Include="..\Powerplant.Infra.CrossCutting\Powerplant.Infra.CrossCutting.csproj" />
+  </ItemGroup>
+
+</Project>

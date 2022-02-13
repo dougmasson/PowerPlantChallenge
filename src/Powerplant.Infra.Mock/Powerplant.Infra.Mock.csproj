@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Powerplant.Core.Domain\Powerplant.Core.Domain.csproj" />
+    <ProjectReference Include="..\Powerplant.Infra.CrossCutting\Powerplant.Infra.CrossCutting.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Bogus" Version="34.0.1" />
+	<PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.2" />
+  </ItemGroup>	
+
+</Project>
