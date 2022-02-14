@@ -1,8 +1,9 @@
-﻿using System;
-using System.Linq;
-using Powerplant.Api.Configurations;
+﻿using Powerplant.Api.Configurations;
+using Powerplant.Infra.CrossCutting.Logs;
 using Serilog;
 using Serilog.Core;
+using System;
+using System.Linq;
 
 namespace Powerplant.API.Logs.Configurations
 {
@@ -11,8 +12,6 @@ namespace Powerplant.API.Logs.Configurations
     /// </summary>
     public static class SerilogConfig
     {
-        public static readonly string PROPERTY_EVENT_TYPE = "EventType";
-
         public static Logger CreateLogger()
         {
             Environment.SetEnvironmentVariable("BASEDIR", AppContext.BaseDirectory);

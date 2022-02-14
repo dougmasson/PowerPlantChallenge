@@ -1,17 +1,18 @@
 ﻿using Murmur;
-using Powerplant.API.Logs.Configurations;
 using Serilog.Core;
 using Serilog.Events;
 using System;
 using System.Text;
 
-namespace Powerplant.API.Logs
+namespace Powerplant.Infra.CrossCutting.Logs
 {
     /// <summary>
     /// Create a uniquely identify for logs
     /// </summary>
     public class EventTypeEnricher : ILogEventEnricher
     {
+        public const string PROPERTY_EVENT_TYPE = "EventType";
+
         public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
         {
             var murmur = MurmurHash.Create32();
@@ -19,7 +20,7 @@ namespace Powerplant.API.Logs
             var hash = murmur.ComputeHash(bytes);
             var numericHash = BitConverter.ToUInt32(hash, 0);
 
-            var eventType = propertyFactory.CreateProperty(SerilogConfig.PROPERTY_EVENT_TYPE, numericHash);
+            var eventType = propertyFactory.CreateProperty(PROPERTY_EVENT_TYPE, numericHash);
             logEvent.AddPropertyIfAbsent(eventType);
         }
     }

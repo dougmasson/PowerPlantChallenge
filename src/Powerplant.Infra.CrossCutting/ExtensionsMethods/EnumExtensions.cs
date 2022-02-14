@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Reflection;
 
-namespace Powerplant.Infra.CrossCutting
+namespace Powerplant.Infra.CrossCutting.ExtensionsMethods
 {
     public static class EnumExtensions
     {

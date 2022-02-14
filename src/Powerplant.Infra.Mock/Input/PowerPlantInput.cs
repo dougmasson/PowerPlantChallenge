@@ -1,7 +1,7 @@
 ﻿using Bogus;
 using Powerplant.Core.Domain.Enum;
 using Powerplant.Core.Domain.Model.Input;
-using Powerplant.Infra.CrossCutting;
+using Powerplant.Infra.CrossCutting.ExtensionsMethods;
 
 namespace Powerplant.Infra.Mock.Input
 {

@@ -1,9 +1,11 @@
+using NSubstitute;
 using NUnit.Framework;
 using Powerplant.Core.Domain.Model.View;
 using Powerplant.Core.Service;
 using Powerplant.Core.Service.Factory;
 using Powerplant.Infra.Mock.Input;
 using Powerplant.Infra.Mock.View;
+using Powerplant.Infra.WebsocketManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +20,9 @@ namespace Powerplant.UnitTests
 
         public ServicesTests()
         {
-            _productionPlanService = new ProductionPlanService(new PowerPlanFactory());
+            var webSocktet = Substitute.For<IWebSocketHandler>();
+
+            _productionPlanService = new ProductionPlanService(new PowerPlanFactory(), webSocktet);
             _productionPlanInputMock = new ProductionPlanInputDTOMock();
         }
 

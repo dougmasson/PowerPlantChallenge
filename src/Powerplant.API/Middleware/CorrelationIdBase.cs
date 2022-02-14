@@ -9,7 +9,7 @@
     /// </summary>
     public class CorrelationIdBase
     {
-        protected const string KEY = "X-Correlation-Id";
+        public static readonly string KEY = "X-Correlation-Id";
         protected const string PROPERTY = "corellationId";
 
         protected readonly RequestDelegate _next;

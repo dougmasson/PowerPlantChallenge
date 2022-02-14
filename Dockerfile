@@ -11,6 +11,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 
 COPY ["src/Powerplant.API/Powerplant.API.csproj", "Powerplant.API/"]
+COPY ["src/Powerplant.Infra.WebsocketManager/Powerplant.Infra.WebsocketManager.csproj", "Powerplant.Infra.WebsocketManager/"]
 COPY ["src/Powerplant.Infra.Mock/Powerplant.Infra.Mock.csproj", "Powerplant.Infra.Mock/"]
 COPY ["src/Powerplant.Core.Domain/Powerplant.Core.Domain.csproj", "Powerplant.Core.Domain/"]
 COPY ["src/Powerplant.Infra.CrossCutting/Powerplant.Infra.CrossCutting.csproj", "Powerplant.Infra.CrossCutting/"]

@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 using Powerplant.Api.Configurations;
 using Powerplant.Infra.DependencyInjection.Config;
+using Powerplant.Infra.WebsocketManager;
 
 namespace Powerplant.API
 {
@@ -42,6 +42,8 @@ namespace Powerplant.API
             services.AddDI_FluentValidation();
 
             services.AddSwaggerService();
+
+            services.AddWebSocketManagerServices();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -60,6 +62,8 @@ namespace Powerplant.API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.AddWebSocketManagerApp("/ws");
 
             app.UseEndpoints(endpoints =>
             {

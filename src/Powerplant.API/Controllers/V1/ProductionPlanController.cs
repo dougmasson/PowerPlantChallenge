@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Powerplant.Api.Middleware;
 using Powerplant.Core.Domain.Interface;
 using Powerplant.Core.Domain.Model.Input;
 using Powerplant.Core.Domain.Model.System;
 using Powerplant.Core.Domain.Model.View;
+using Powerplant.Infra.CrossCutting.ExtensionsMethods;
 using Powerplant.Infra.Mock.SwaggerExample;
 using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.Filters;
@@ -36,6 +38,8 @@ namespace Powerplant.API.Controllers
         [SwaggerResponseExample(StatusCodes.Status500InternalServerError, typeof(InternalServerErrorExample))]
         public async Task<IActionResult> PostAsync([FromBody] ProductionPlanInputDTO productionPlanInputDTO)
         {
+            productionPlanInputDTO.CorellationId = Request.GetHeader(CorrelationIdBase.KEY);
+
             var productionPlanViewDTO = await _productionPlanService.Process(productionPlanInputDTO);
 
             if (!productionPlanViewDTO.Erros.Any())
