@@ -26,33 +26,26 @@ namespace Powerplant.Infra.WebsocketManager
             var socket = await context.WebSockets.AcceptWebSocketAsync();
             await _webSocketHandler.OnConnected(socket);
 
-            await Receive(socket, async (result, buffer) =>
+            try
             {
-                if (result.MessageType == WebSocketMessageType.Text)
+                await Receive(socket, async (result, buffer) =>
                 {
-                    await _webSocketHandler.ReceiveAsync(socket, result, buffer);
-                    return;
-                }
+                    if (result.MessageType == WebSocketMessageType.Text)
+                    {
+                        await _webSocketHandler.ReceiveAsync(socket, result, buffer);
+                    }
 
-                else if (result.MessageType == WebSocketMessageType.Close)
-                {
-                    await _webSocketHandler.OnDisconnected(socket);
-                    return;
-                }
+                    else if (result.MessageType == WebSocketMessageType.Close)
+                    {
+                        await _webSocketHandler.OnDisconnected(socket);
+                    }
 
-            });
-
-            //TODO - investigate the Kestrel exception thrown when this is the last middleware
-            //await _next.Invoke(context);
-
-            //if (!context.Response.HasStarted)
-            //{
-            //    await _next.Invoke(context);
-            //}
-            //else
-            //{
-            //    await context.Response.WriteAsync(string.Empty);
-            //}
+                });
+            }
+            catch (Exception ex)
+            {
+                socket.Abort();
+            }
         }
 
         private async Task Receive(WebSocket socket, Action<WebSocketReceiveResult, byte[]> handleMessage)
@@ -61,8 +54,7 @@ namespace Powerplant.Infra.WebsocketManager
 
             while (socket.State == WebSocketState.Open)
             {
-                var result = await socket.ReceiveAsync(buffer: new ArraySegment<byte>(buffer),
-                                                       cancellationToken: CancellationToken.None);
+                var result = await socket.ReceiveAsync(buffer: new ArraySegment<byte>(buffer), cancellationToken: CancellationToken.None);
 
                 handleMessage(result, buffer);
             }

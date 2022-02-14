@@ -30,7 +30,7 @@ namespace Powerplant.Infra.WebsocketManager
         public void AddSocket(WebSocket socket)
         {
             _sockets.TryAdd(CreateConnectionId(), socket);
-            Log.Information("Client connected!");
+            Log.Information("New Client connected!");
         }
 
         public async Task RemoveSocket(string id)
