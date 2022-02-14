@@ -15,14 +15,17 @@ namespace Powerplant.WebsocketClient
 
         private static async Task RunWebSockets()
         {
+            string id = Guid.NewGuid().ToString().ToUpper();
+
             Console.WriteLine("==============================================");
             Console.WriteLine("|                                            |");
             Console.WriteLine("|             Starting WebSocket             |");
+            Console.WriteLine($"|    {id}    |");
             Console.WriteLine("|                                            |");
             Console.WriteLine("==============================================");
 
             var client = new ClientWebSocket();
-            await client.ConnectAsync(new Uri("ws://localhost:8888/ws"), CancellationToken.None);
+            await client.ConnectAsync(new Uri($"ws://localhost:8888/ws?id={ id }"), CancellationToken.None);
 
             Console.WriteLine();
             Console.WriteLine("***************** Connected! *****************");

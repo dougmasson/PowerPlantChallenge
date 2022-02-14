@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Net.WebSockets;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Powerplant.Infra.WebsocketManager
 {
@@ -23,8 +25,10 @@ namespace Powerplant.Infra.WebsocketManager
             if (!context.WebSockets.IsWebSocketRequest)
                 return;
 
+            string id = GetId(context);
+
             var socket = await context.WebSockets.AcceptWebSocketAsync();
-            await _webSocketHandler.OnConnected(socket);
+            await _webSocketHandler.OnConnected(socket, id);
 
             try
             {
@@ -46,6 +50,26 @@ namespace Powerplant.Infra.WebsocketManager
             {
                 socket.Abort();
             }
+        }
+
+        private string GetId(HttpContext context)
+        {
+            string id = string.Empty;
+
+            var queryString = context.Request.QueryString;
+
+            if (queryString.HasValue)
+            {
+                Regex regex = new Regex(@"id=([a-zA-Z0-9-]+)");
+                var match = regex.Match(queryString.Value);
+
+                if (match.Success)
+                {
+                    id = match.Groups[1].Value;
+                }
+            }
+
+            return id;
         }
 
         private async Task Receive(WebSocket socket, Action<WebSocketReceiveResult, byte[]> handleMessage)

@@ -16,6 +16,7 @@ COPY ["src/Powerplant.Infra.Mock/Powerplant.Infra.Mock.csproj", "Powerplant.Infr
 COPY ["src/Powerplant.Core.Domain/Powerplant.Core.Domain.csproj", "Powerplant.Core.Domain/"]
 COPY ["src/Powerplant.Infra.CrossCutting/Powerplant.Infra.CrossCutting.csproj", "Powerplant.Infra.CrossCutting/"]
 COPY ["src/Powerplant.Core.Service/Powerplant.Core.Service.csproj", "Powerplant.Core.Service/"]
+COPY ["src/Powerplant.Infra.Data/Powerplant.Infra.Data.csproj", "Powerplant.Infra.Data/"]
 COPY ["src/Powerplant.Infra.DependencyInjection/Powerplant.Infra.DependencyInjection.csproj", "Powerplant.Infra.DependencyInjection/"]
 
 RUN dotnet restore "Powerplant.API/Powerplant.API.csproj"

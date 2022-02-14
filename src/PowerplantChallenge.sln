@@ -31,11 +31,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Powerplant.Infra.Mock", "Po
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Powerplant.Infra.DependencyInjection", "Powerplant.Infra.DependencyInjection\Powerplant.Infra.DependencyInjection.csproj", "{59ACBD5A-C0CD-4817-A4C4-3FF156620DA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Powerplant.Infra.WebsocketManager", "Powerplant.Infra.WebsocketManager\Powerplant.Infra.WebsocketManager.csproj", "{FE9E57CC-D84D-4C76-974E-FDA9D3306F86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Powerplant.Infra.WebsocketManager", "Powerplant.Infra.WebsocketManager\Powerplant.Infra.WebsocketManager.csproj", "{FE9E57CC-D84D-4C76-974E-FDA9D3306F86}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Websocket Client", "Websocket Client", "{3DE4FBB6-4E84-4465-A7B4-285C3B3EE563}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Powerplant.WebsocketClient", "Powerplant.WebsocketClient\Powerplant.WebsocketClient.csproj", "{AB35C915-998B-4BC8-A26E-CA7293C24CE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Powerplant.WebsocketClient", "Powerplant.WebsocketClient\Powerplant.WebsocketClient.csproj", "{AB35C915-998B-4BC8-A26E-CA7293C24CE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Powerplant.Infra.Data", "Powerplant.Infra.Data\Powerplant.Infra.Data.csproj", "{D6C6EF0D-A351-4AB8-A4E1-E842EE66ECF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{AB35C915-998B-4BC8-A26E-CA7293C24CE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB35C915-998B-4BC8-A26E-CA7293C24CE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB35C915-998B-4BC8-A26E-CA7293C24CE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6C6EF0D-A351-4AB8-A4E1-E842EE66ECF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6C6EF0D-A351-4AB8-A4E1-E842EE66ECF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6C6EF0D-A351-4AB8-A4E1-E842EE66ECF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6C6EF0D-A351-4AB8-A4E1-E842EE66ECF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,6 +99,7 @@ Global
 		{59ACBD5A-C0CD-4817-A4C4-3FF156620DA9} = {4F0ABCB8-3D8F-46E3-BB41-7E9A22A916EB}
 		{FE9E57CC-D84D-4C76-974E-FDA9D3306F86} = {4F0ABCB8-3D8F-46E3-BB41-7E9A22A916EB}
 		{AB35C915-998B-4BC8-A26E-CA7293C24CE0} = {3DE4FBB6-4E84-4465-A7B4-285C3B3EE563}
+		{D6C6EF0D-A351-4AB8-A4E1-E842EE66ECF0} = {4F0ABCB8-3D8F-46E3-BB41-7E9A22A916EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {03D5F483-F680-4485-9089-F12AD1B6D4BE}

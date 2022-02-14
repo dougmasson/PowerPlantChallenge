@@ -15,9 +15,9 @@ namespace Powerplant.Infra.WebsocketManager
             WebSocketConnectionManager = webSocketConnectionManager;
         }
 
-        public virtual async Task OnConnected(WebSocket socket)
+        public virtual async Task OnConnected(WebSocket socket, string id)
         {
-            WebSocketConnectionManager.AddSocket(socket);
+            WebSocketConnectionManager.AddSocket(socket, id);
         }
 
         public virtual async Task OnDisconnected(WebSocket socket)

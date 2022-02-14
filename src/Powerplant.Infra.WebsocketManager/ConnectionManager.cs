@@ -27,10 +27,10 @@ namespace Powerplant.Infra.WebsocketManager
             return _sockets.FirstOrDefault(p => p.Value == socket).Key;
         }
         
-        public void AddSocket(WebSocket socket)
+        public void AddSocket(WebSocket socket, string id)
         {
-            _sockets.TryAdd(CreateConnectionId(), socket);
-            Log.Information("New Client connected!");
+            _sockets.TryAdd(CreateConnectionId(id), socket);
+            Log.Information($"Client '{id}' connected!");
         }
 
         public async Task RemoveSocket(string id)
@@ -43,9 +43,9 @@ namespace Powerplant.Infra.WebsocketManager
                                     cancellationToken: CancellationToken.None);
         }
 
-        private string CreateConnectionId()
+        private string CreateConnectionId(string id)
         {
-            return Guid.NewGuid().ToString();
+            return id??Guid.NewGuid().ToString();
         }
     }
 }

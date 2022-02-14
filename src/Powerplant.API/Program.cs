@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Powerplant.API.Logs.Configurations;
+using Powerplant.Infra.Data.InitializeData;
 using Serilog;
 using System;
 
@@ -17,7 +18,9 @@ namespace Powerplant.API
                 Log.Information("Starting up");
 
                 var host = CreateHostBuilder(args).Build();
-                
+
+                var dataBaseProviderhost = host.InitDataBaseAsync().Result;
+
                 host.Run();
             }
             catch (Exception ex)

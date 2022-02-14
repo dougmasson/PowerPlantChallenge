@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Powerplant.Core.Domain\Powerplant.Core.Domain.csproj" />
     <ProjectReference Include="..\Powerplant.Core.Service\Powerplant.Core.Service.csproj" />
+    <ProjectReference Include="..\Powerplant.Infra.Data\Powerplant.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

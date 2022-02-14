@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using Powerplant.Core.Domain.Model.Input;
-using System.Collections.Generic;
 
 namespace Powerplant.Core.Domain.Validator
 {

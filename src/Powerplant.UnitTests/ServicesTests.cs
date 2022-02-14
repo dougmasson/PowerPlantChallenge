@@ -1,5 +1,6 @@
 using NSubstitute;
 using NUnit.Framework;
+using Powerplant.Core.Domain.Interface.Infra.Repository;
 using Powerplant.Core.Domain.Model.View;
 using Powerplant.Core.Service;
 using Powerplant.Core.Service.Factory;
@@ -9,6 +10,7 @@ using Powerplant.Infra.WebsocketManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Powerplant.UnitTests
 {
@@ -22,7 +24,10 @@ namespace Powerplant.UnitTests
         {
             var webSocktet = Substitute.For<IWebSocketHandler>();
 
-            _productionPlanService = new ProductionPlanService(new PowerPlanFactory(), webSocktet);
+            var paramRepository = Substitute.For<IParamRepository>();
+            paramRepository.GetByKey(Arg.Any<string>()).Returns(Task.FromResult(new Core.Domain.Model.ParamModel { Value = "0.3" }));
+
+            _productionPlanService = new ProductionPlanService(paramRepository, new PowerPlantFactory(), webSocktet);
             _productionPlanInputMock = new ProductionPlanInputDTOMock();
         }
 

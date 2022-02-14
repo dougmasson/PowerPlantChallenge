@@ -1,10 +1,12 @@
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Powerplant.Api.Configurations;
+using Powerplant.Infra.Data.Context;
 using Powerplant.Infra.DependencyInjection.Config;
 using Powerplant.Infra.WebsocketManager;
 
@@ -44,6 +46,10 @@ namespace Powerplant.API
             services.AddSwaggerService();
 
             services.AddWebSocketManagerServices();
+
+            services.AddCaching();
+
+            services.AddDbContext<ApiDbContext>(options => { options.UseInMemoryDatabase("productionPlan-api-in-memory"); });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

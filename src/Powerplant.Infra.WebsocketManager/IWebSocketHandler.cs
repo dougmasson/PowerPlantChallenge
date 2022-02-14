@@ -5,7 +5,7 @@ namespace Powerplant.Infra.WebsocketManager
 {
     public interface IWebSocketHandler
     {
-        public Task OnConnected(WebSocket socket);
+        public Task OnConnected(WebSocket socket, string id);
         public Task OnDisconnected(WebSocket socket);
         public Task SendMessageAsync(WebSocket socket, string message);
         public Task SendMessageAsync(string socketId, string message);

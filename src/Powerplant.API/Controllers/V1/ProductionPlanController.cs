@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Powerplant.Api.Middleware;
-using Powerplant.Core.Domain.Interface;
+using Powerplant.Core.Domain.Interface.Service;
 using Powerplant.Core.Domain.Model.Input;
 using Powerplant.Core.Domain.Model.System;
 using Powerplant.Core.Domain.Model.View;

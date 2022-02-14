@@ -2,7 +2,7 @@
 using Powerplant.Core.Domain.Model.View;
 using System.Threading.Tasks;
 
-namespace Powerplant.Core.Domain.Interface
+namespace Powerplant.Core.Domain.Interface.Service
 {
     public interface IProductionPlanService
     {

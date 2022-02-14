@@ -14,7 +14,7 @@ and taking into account the cost of the underlying energy sources (gas,  kerosin
 
 ### Optionally
 - [x] Docker
-- [ ] CO2
+- [x] CO2
 - [x] Websocket (Implementation based on [article](https://radu-matei.com/blog/aspnet-core-websockets-middleware/))
 
 ### Link
@@ -41,10 +41,12 @@ and taking into account the cost of the underlying energy sources (gas,  kerosin
 ### Docker
 
 - **create image:** docker build -t api-powerplant-image -f Dockerfile .
-- **run container:** docker run -it --rm --name api-supermarket -p 8888:80 -v "D:\\_source\\Docker_File_Sharing:/app/Logs" api-powerplant-image
+- **run container:** docker run -it --rm --name api-powerplant -p 8888:80 -v "D:\\_source\\Docker_File_Sharing:/app/Logs" api-powerplant-image
   > Param -v allows access files that exist on the host file system outside of the Docker container
 
 ## Build & Run (Websocket Client)
+
+To make it more realistic, run many instances.
 
 ### Microsoft Visual Studio 2022
 

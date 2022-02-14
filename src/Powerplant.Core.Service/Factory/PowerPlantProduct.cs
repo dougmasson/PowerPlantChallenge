@@ -11,7 +11,7 @@ namespace Powerplant.Core.Service.Factory
     {
         public abstract string TypeName { get; }
         public abstract PowerPlantProduct Create();
-        public abstract void CalculatePower(FuelsInput fuel);
+        public abstract void CalculatePower(FuelsInput fuel, ParamModel paramModel);
 
         public virtual void SetValues(PowerPlantInput powerPlantInput)
         {

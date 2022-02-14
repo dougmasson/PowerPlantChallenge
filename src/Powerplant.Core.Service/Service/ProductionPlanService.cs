@@ -1,4 +1,5 @@
-﻿using Powerplant.Core.Domain.Interface;
+﻿using Powerplant.Core.Domain.Interface.Infra.Repository;
+using Powerplant.Core.Domain.Interface.Service;
 using Powerplant.Core.Domain.Model;
 using Powerplant.Core.Domain.Model.Input;
 using Powerplant.Core.Domain.Model.System;
@@ -22,13 +23,15 @@ namespace Powerplant.Core.Service
     /// </summary>
     public class ProductionPlanService : IProductionPlanService
     {
-        private readonly IPowerPlanFactory _powerPlanFactory;
+        private readonly IPowerPlantFactory _powerPlanFactory;
         private readonly IWebSocketHandler _webSocketHandler;
+        private readonly IParamRepository _paramRepository;
 
-        public ProductionPlanService(IPowerPlanFactory powerPlanFactory, IWebSocketHandler webSocketHandler)
+        public ProductionPlanService(IParamRepository paramRepository, IPowerPlantFactory powerPlanFactory, IWebSocketHandler webSocketHandler)
         {
             _powerPlanFactory = powerPlanFactory;
             _webSocketHandler = webSocketHandler;
+            _paramRepository = paramRepository;
         }
 
         /// <summary>
@@ -41,9 +44,11 @@ namespace Powerplant.Core.Service
             var productionPlanViewDTO = new ProductionPlanViewDTO();
             var powerPlants = new List<PowerPlantModel>();
 
+            var paramCoTon = await _paramRepository.GetByKey("Co2Ton");
+
             foreach (var powerPlantInput in productionPlanInputDTO.PowerPlants)
             {
-                var powerPlant = _powerPlanFactory.Create(powerPlantInput, productionPlanInputDTO.Fuels);
+                var powerPlant = _powerPlanFactory.Create(powerPlantInput, productionPlanInputDTO.Fuels, paramCoTon);
 
                 if (powerPlant != null)
                 {
