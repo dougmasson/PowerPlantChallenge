@@ -20,6 +20,19 @@ and taking into account the cost of the underlying energy sources (gas,  kerosin
 ### Link
 - http://localhost:8888/api/v1/productionplan
 
+### Example
+
+- Postman: [colletion](powerplant-coding-challenge.postman_collection.json)
+
+### Images
+
+<p align="center">
+  <img src="img/img-03-evidencia.png?style=centerme" />
+</p>
+<p>
+  <img src="img/img-04-evidencia.png?style=centerme" />
+</p>
+
 ## Build & Run (REST API)
 
 ### Microsoft Visual Studio 2022
@@ -44,6 +57,10 @@ and taking into account the cost of the underlying energy sources (gas,  kerosin
 - **run container:** docker run -it --rm --name api-powerplant -p 8888:80 -v "D:\\_source\\Docker_File_Sharing:/app/Logs" api-powerplant-image
   > Param -v allows access files that exist on the host file system outside of the Docker container
 
+<p align="center">
+  <img src="img/img-02-docker.png?style=centerme" />
+</p>
+
 ## Build & Run (Websocket Client)
 
 To make it more realistic, run many instances.
@@ -63,4 +80,9 @@ To make it more realistic, run many instances.
 ## Swagger (Documentation)
 
 - http://localhost:8888/swagger
-  > Only available environment *Development*
+
+<p align="center">
+  <img src="img/img-01-swagger.png?style=centerme" />
+</p>
+
+  > Only available **environment *Development***
