@@ -17,7 +17,13 @@ namespace Powerplant.Api.Middleware
             context.Response.OnStarting(state =>
             {
                 var httpContext = (HttpContext)state;
-                httpContext.Response.Headers.Add(KEY, httpContext.Request.Headers.First(x => x.Key.Equals(KEY)).Value);
+
+                var header = httpContext.Request.Headers.FirstOrDefault(x => x.Key.Equals(KEY));
+
+                if (header.Key != null)
+                {
+                    httpContext.Response.Headers.Add(KEY, header.Value);
+                }
 
                 return Task.CompletedTask;
             }, context);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Powerplant.Infra.CrossCutting.ExtensionsMethods;
 
 namespace Powerplant.Api.Middleware
 {
@@ -14,7 +15,7 @@ namespace Powerplant.Api.Middleware
 
         public override async Task InvokeAsync(HttpContext httpContext)
         {
-            if (httpContext.Request.Headers.ContainsKey(KEY) == false)
+            if (httpContext.Request.Headers.ContainsKey(KEY) == false && !httpContext.IsWebsocket())
             {
                 httpContext.Request.Headers.Add(KEY, Guid.NewGuid().ToString());
             }

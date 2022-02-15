@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
+using Powerplant.Infra.CrossCutting.ExtensionsMethods;
 using Serilog.Context;
 
 namespace Powerplant.Api.Middleware
@@ -16,9 +17,16 @@ namespace Powerplant.Api.Middleware
 
         public override async Task InvokeAsync(HttpContext httpContext)
         {
-            httpContext.Request.Headers.TryGetValue(KEY, out StringValues correlationId);
+            if (!httpContext.IsWebsocket())
+            {
+                httpContext.Request.Headers.TryGetValue(KEY, out StringValues correlationId);
 
-            using (LogContext.PushProperty(PROPERTY, correlationId.FirstOrDefault()))
+                using (LogContext.PushProperty(PROPERTY, correlationId.FirstOrDefault()))
+                {
+                    await _next.Invoke(httpContext);
+                }
+            }
+            else
             {
                 await _next.Invoke(httpContext);
             }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Serilog;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
@@ -45,10 +48,24 @@ namespace Powerplant.Infra.WebsocketManager
 
         public async Task SendMessageToAllAsync(string message)
         {
+            List<string> clients = new List<string>();
+
             foreach (var pair in WebSocketConnectionManager.GetAll())
             {
                 if (pair.Value.State == WebSocketState.Open)
+                {
                     await SendMessageAsync(pair.Value, message);
+                    clients.Add(pair.Key);
+                }
+            }
+
+            if(clients.Count == 0)
+            {
+                Log.Warning("No Client connected for send message websocket");
+            }
+            else
+            {
+                Log.Information($"Sent message websocket for { string.Join(" | ", clients) }");
             }
         }
 

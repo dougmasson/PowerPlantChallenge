@@ -57,6 +57,7 @@ namespace Powerplant.WebsocketClient
 
                 if (result.MessageType == WebSocketMessageType.Text)
                 {
+                    Console.WriteLine();
                     Console.WriteLine("==============================================");
                     Console.WriteLine();
                     Console.WriteLine(Encoding.UTF8.GetString(buffer, 0, result.Count));

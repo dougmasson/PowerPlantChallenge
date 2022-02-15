@@ -4,7 +4,6 @@ using System.Net.WebSockets;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace Powerplant.Infra.WebsocketManager
 {
@@ -43,7 +42,6 @@ namespace Powerplant.Infra.WebsocketManager
                     {
                         await _webSocketHandler.OnDisconnected(socket);
                     }
-
                 });
             }
             catch (Exception ex)

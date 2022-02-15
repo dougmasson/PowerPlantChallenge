@@ -27,14 +27,14 @@ and taking into account the cost of the underlying energy sources (gas,  kerosin
 - Open **PowerplantChallenge.sln** into src folder;
 - Select project **Powerplant.API**;
 - Click on **Development** to **build and run** the solution;
-> The Solution starts with the *Powerplant.API profile* defined in the **launchSettings.json**.
+  > The Solution starts with the *Powerplant.API profile* defined in the **launchSettings.json**.
 
 ### Command Line
 
 - **build:** folder src; dotnet build PowerplantChallenge.sln
 - **run 1:** folder src\Powerplant.API; dotnet run Powerplant.API.csproj
 - **run 2:** folder src\Powerplant.API\bin\Debug\net6.0; dotnet Powerplant.API.dll
-  > Set Enviroment before to run2:
+  > Set Enviroment before to run 2:
   > - PowerShell -----> $Env:ASPNETCORE_ENVIRONMENT = "Development"
   > - Command line -> setx ASPNETCORE_ENVIRONMENT "Development"
 

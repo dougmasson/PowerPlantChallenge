@@ -150,7 +150,6 @@ namespace Powerplant.Core.Service
                                                        });
 
             await _webSocketHandler.SendMessageToAllAsync(message);
-            Log.Information("Send message websocket");
         }
     
     }
