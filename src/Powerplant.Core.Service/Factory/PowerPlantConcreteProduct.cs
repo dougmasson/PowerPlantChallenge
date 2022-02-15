@@ -36,13 +36,13 @@ namespace Powerplant.Core.Service.Factory
     /// <summary>
     /// ConcreteProduct of PowerPlant
     /// </summary>
-    public class TuborJet : PowerPlantProduct
+    public class TurboJet : PowerPlantProduct
     {
         public override string TypeName => PowerPlantType.TURBO_JET.ToDescriptionString();
 
         public override PowerPlantProduct Create()
         {
-            return new TuborJet();
+            return new TurboJet();
         }
 
         public override void SetValues(PowerPlantInput powerPlantInput)

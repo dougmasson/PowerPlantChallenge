@@ -17,7 +17,7 @@ namespace Powerplant.Core.Service.Factory
             _powerPlants = new List<PowerPlantProduct>
             {
                 new GasFired(),
-                new TuborJet(),
+                new TurboJet(),
                 new WindTurbine(),
             };
         }
